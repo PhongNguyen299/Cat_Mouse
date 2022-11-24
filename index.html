@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Cat & Mouse</title>
+</head>
+<body>
+<script>
+  const Mouse = function (name,weight,speed,status) {
+      this.name = name;
+      this.weight = weight;
+      this.speed = speed;
+      this.status = status;
+
+
+      this.setStatus = function (status) {
+          this.status = status;
+      }
+
+      this.setWeight = function (weight){
+          this.weight = weight;
+      }
+
+      this.getWeight = function (){
+          return this.getWeight();
+      }
+
+      this.getStatus = function (status) {
+          if (this.status) alert('Mouse is alive')
+          else alert('Mouse is dead')
+      }
+
+      this.speak = function () {
+          return alert('chit, chit')
+      }
+  }
+
+  const Cat = function (name,weight,speed){
+      this.name= name;
+      this.weight = weight;
+      this.speed = speed;
+
+      this.setWeight = function (weight){
+          this.weight = weight;
+      }
+
+      this.getWeight = function (){
+          return this.getWeight();
+      }
+
+      this.speak = function () {
+          return alert('Meow, Meow');
+      }
+
+      this.catchMouse = function (mouse){
+          if (this.speed > mouse.speed && mouse.status == true){
+              alert('Cat have caught Mouse');
+              return mouse;
+          }
+      }
+
+      this.eatMouse = function (mouse){
+          if (mouse.status == true){
+              alert('Cat have ate Mouse');
+              this.weight += mouse.weight;
+          }
+      }
+  }
+
+  const cat = new Cat('Tom',10,5);
+  const mouse = new Mouse('Jerry',2,3,true);
+  cat.catchMouse(mouse);
+  cat.eatMouse(cat.catchMouse(mouse))
+</script>
+</body>
+</html>
